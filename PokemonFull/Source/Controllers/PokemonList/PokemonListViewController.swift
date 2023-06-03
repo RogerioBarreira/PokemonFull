@@ -19,6 +19,8 @@ class PokemonListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Pokemon List"
         setupTableView()
         setupRequest()
     }
@@ -66,6 +68,12 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let coordinator = Coordinator(navigationController: navigationController)
+        coordinator.startPokemonDetail(result: viewModelPokemonList.cellForRow(indexPath: indexPath))
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

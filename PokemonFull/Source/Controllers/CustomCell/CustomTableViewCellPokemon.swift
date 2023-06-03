@@ -48,4 +48,32 @@ class CustomTableViewCellPokemon: UITableViewCell {
     func setupCell(name: Result?) {
         labelName.text = name?.name ?? ""
     }
+    
+    func setupCell(name: Ability?) {
+        labelName.text = name?.ability?.name ?? ""
+    }
+    
+    func setupCell(name: Species?) {
+        labelName.text = name?.name ?? ""
+    }
+    
+    func setupCell(name: GameIndex?) {
+        labelName.text = name?.version?.name ?? ""
+    }
+    
+    func setupCell(name: HeldItem?) {
+        labelName.text = name?.item?.name ?? ""
+    }
+    
+    func setupCell(name: Move?) {
+        labelName.text = name?.move?.name ?? ""
+    }
+    
+    func setupCell(name: Stat?) {
+        labelName.text = name?.stat?.name ?? ""
+    }
+    
+    func setupCell(name: TypeElement?) {
+        labelName.text = name?.type?.name ?? ""
+    }
 }
