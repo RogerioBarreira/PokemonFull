@@ -9,6 +9,7 @@ import Foundation
 
 final class Worker: NSObject {
     
+    private var pokemonDetail: PokemonDetail?
     private var pokemonPerson: PokemonList?
     private let request = RequestGenerics()
     
@@ -26,6 +27,21 @@ final class Worker: NSObject {
             case true:
                 self.pokemonPerson = myPokemonPerson
                 completion(myPokemonPerson,true)
+            case false:
+                completion(nil,false)
+            }
+        }
+    }
+    
+    func workerPokemonDetail(urlString: String, completion: @escaping (PokemonDetail?, Bool)-> Void) {
+        
+        request.requestGenerics(urlString: urlString, method: .get, custom: PokemonDetail.self) { [weak self] myPokemonDetail, success in
+            guard let self = self else { return }
+            switch success {
+                
+            case true:
+                self.pokemonDetail = myPokemonDetail
+                completion(myPokemonDetail, true)
             case false:
                 completion(nil,false)
             }

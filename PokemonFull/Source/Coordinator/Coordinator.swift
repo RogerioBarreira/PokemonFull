@@ -22,4 +22,16 @@ final class Coordinator: NSObject {
         let viewController = PokemonListViewController()
         self.navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func startPokemonDetail(result: Result?) {
+        let viewController = PokemonDetailViewController()
+        viewController.viewModelPokemonDetail.getResult(result: result)
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func startPokemonAbility(detail: Ability?) {
+        let viewController = PokemonAbilitiesViewController()
+        viewController.viewModelPokemonAbility.getDetailGameIndex(detail: detail)
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
 }
